@@ -141,7 +141,7 @@ export default class ExampleComponent extends React.Component  {
   render() {
     return (
       <PayPalButton
-        amount="0.01"
+        amount="0.01"//este valor debe venir d eun formaulario anterior
         // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
         onSuccess={(details, data) => {
           alert("Transaction completed by " + details.payer.name.given_name);
@@ -187,3 +187,5 @@ export default class Example Component {
 este lo obtienes creando una app para paypal con los pasos que estan en la siguiente URL y copiando el ID de la app creada, para que asi cargue los datos del vendedor en automatico al iniciar la venta
 
 https://developer.paypal.com/docs/integration/admin/manage-apps/
+
+a este componente se le debe de pasar la informacion de la compra desde otro formulario, el cual creara la orden por medio de la API y pasara esos parametros a este boton para efectuar la venta
