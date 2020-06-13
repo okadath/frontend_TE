@@ -189,3 +189,13 @@ este lo obtienes creando una app para paypal con los pasos que estan en la sigui
 https://developer.paypal.com/docs/integration/admin/manage-apps/
 
 a este componente se le debe de pasar la informacion de la compra desde otro formulario, el cual creara la orden por medio de la API y pasara esos parametros a este boton para efectuar la venta
+
+
+instalar yarn en ubuntu 20
+```sh
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install yarn
+```
