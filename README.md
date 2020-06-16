@@ -165,7 +165,7 @@ en las funciones es donde se indica que comportamiento debe tener, si se usara r
 el codigo posterior a los eventos se maneja en ` onSucess,onError,on Approve`
 para que funcione en produccion al elemento del boton se le debe de agregar el ID del vendedor:
 
-```
+```sh
 import { PayPalButton } from "react-paypal-button-v2";
 
 export default class Example Component {
@@ -198,4 +198,162 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update
 sudo apt install yarn
+```
+
+Native Base:
+
+libreria de componentes para react web, y react native
+
+seguir la instalacion de :
+https://docs.nativebase.io/docs/GetStarted.html
+
+```sh
+yarn add native-base expo
+# y linkear
+yarn react-native link
+# podrian faltar las fuentes 
+```
+
+para instalar en web
+
+```sh
+npm install -g create-react-app
+npx create-react-app nativebase-app
+cd nativebase-app
+
+npm i native-base react-art react-native-web --save
+npm i react-app-rewired customize-cra @babel/plugin-proposal-class-properties --dev --save
+
+```
+o hacerlo con yarn
+```sh
+yarn native-base react-art react-native-web react-app-rewired customize-cra @babel/plugin-proposal-class-properties 
+
+```
+reescribir el `package.json`
+```js
+"scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+}
+```
+crear en la carpeta principal un archivo `config-overrides.js`:
+
+```js
+const path = require('path');
+const {
+  override,
+  addWebpackAlias,
+  babelInclude,
+  addBabelPlugins
+} = require('customize-cra');
+
+module.exports = override(
+  addWebpackAlias({
+    "react-native/Libraries/Renderer/shims/ReactNativePropRegistry": "react-native-web/dist/modules/ReactNativePropRegistry",
+    "react-native": "react-native-web"
+  }),
+  babelInclude([
+    path.resolve('src'),
+    path.resolve('node_modules/native-base-shoutem-theme'),
+    path.resolve('node_modules/react-navigation'),
+    path.resolve('node_modules/react-native-easy-grid'),
+    path.resolve('node_modules/react-native-drawer'),
+    path.resolve('node_modules/react-native-safe-area-view'),
+    path.resolve('node_modules/react-native-vector-icons'),
+    path.resolve('node_modules/react-native-keyboard-aware-scroll-view'),
+    path.resolve('node_modules/react-native-web'),
+    path.resolve('node_modules/react-native-tab-view'),
+    path.resolve('node_modules/static-container'),
+  ]),
+  addBabelPlugins(
+    "@babel/plugin-proposal-class-properties"
+  ),
+);
+
+```
+agregar al `App.css`:
+```css
+
+@font-face {
+  font-family: "Entypo";
+  src: url("~react-native-vector-icons/Fonts/Entypo.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "EvilIcons";
+  src: url("~react-native-vector-icons/Fonts/EvilIcons.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "FontAwesome";
+  src: url("~react-native-vector-icons/Fonts/FontAwesome.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "fontcustom";
+  src: url("~react-native-vector-icons/Fonts/Foundation.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Ionicons";
+  src: url("~react-native-vector-icons/Fonts/Ionicons.ttf") format("truetype");
+}
+
+@font-face {
+  /*font-family: 'MaterialCommunityIcons';*/
+  font-family: "Material Design Icons";
+  src: url("~react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "MaterialIcons";
+  src: url("~react-native-vector-icons/Fonts/MaterialIcons.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Octicons";
+  src: url("~react-native-vector-icons/Fonts/Octicons.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "simple-line-icons";
+  src: url("~react-native-vector-icons/Fonts/SimpleLineIcons.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Zocial";
+  src: url("~react-native-vector-icons/Fonts/Zocial.ttf") format("truetype");
+}
+```
+para agregar fuentes personalizadas hay que agregar al app.js:
+
+```js
+import * as Font from 'expo-font';
+...
+class App extends Component {
+  async componentDidMount() {
+    await Font.loadAsync({
+      Roboto: require('native-base/Fonts/Roboto.ttf'),
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+      // ...Ionicons.font,
+    });
+    this.setState({ isReady: true });
+  }
+  ...
+}
+```
+
+
+```sh
+npm install --save react-native-vector-icons
+
+# For Automatic link (RN < 0.60)
+
+react-native link react-native-vector-icons
 ```
