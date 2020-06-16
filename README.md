@@ -350,10 +350,22 @@ class App extends Component {
 ```
 
 
+hay que linkear las dependencias
 ```sh
-npm install --save react-native-vector-icons
-
-# For Automatic link (RN < 0.60)
-
-react-native link react-native-vector-icons
+yarn react-native link
 ```
+
+iconos:
+hay un error ya que al instalar el paquete de native abse una dependencia es `react-native-vector-icons` entonces si lo instalas explicitamente hay errores, no hay que instalarlo y para importar los iconos hay que agregarlo al `App.js`:
+```js
+async componentDidMount() {
+    await Font.loadAsync({
+      ...
+      Ionicons: require("@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/Ionicons.ttf")
+    });
+    this.setState({ isReady: true });
+  }
+```
+
+
+
