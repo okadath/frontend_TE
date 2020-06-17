@@ -68,33 +68,72 @@ import Contact from './components/Contact';
 import Error from './components/Error';
 import Navigation from './components/Navigation';
 import Get_demo from './components/Get_demo';
-import Header from './components/Header/Header';
+// import Header from './components/Header/Header';
+import {  Container, 
+          Header, 
+          Title, 
+          Content, 
+          Footer, 
+          FooterTab, 
+          Button, 
+          Left, Right, Body, 
+          Icon, Text } from 'native-base';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 class App extends Component {
   async componentDidMount() {
     await Font.loadAsync({
       Roboto: require('native-base/Fonts/Roboto.ttf'),
       Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
-      Ionicons: require("@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/Ionicons.ttf")
+      Ionicons: require("@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/Ionicons.ttf"),
+FontAwesome: require("@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/FontAwesome.ttf"),
+MaterialIcons: require("@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/MaterialIcons.ttf")
+
       // ...Ionicons.font,
     });
     this.setState({ isReady: true });
   }
   render() {
     return (      
-       <BrowserRouter>
-        <div className="App">
-         <Header />
-          <Navigation />
-            <Switch>
+       <Container>
+        <Header>
+          <Left>
+            <Button iconLeft transparent>
+              <Icon name='menu' />
+            </Button>
+          </Left>
 
-             <Route path="/" component={Home} exact/>
-             <Route path="/about" component={About}/>
-             <Route path="/contact" component={Contact}/>
-             <Route path="/get_videos" component={Get_demo}/>
-            <Route component={Error}/>
-           </Switch>
-        </div> 
-      </BrowserRouter>
+          <Body>
+            <Title>Experimental</Title>
+          </Body>
+           <Right>
+            <Button iconLeft transparent >
+            <Text></ Text>
+              <Icon type="MaterialIcons" name='translate' />
+            </Button>
+        
+            <Button  iconLeft transparent>
+            <Text></ Text>
+              <Icon name='person-add' />
+            </Button>
+            <Button  iconLeft transparent>
+            <Text></ Text>
+              <Icon name='log-in' />
+            </Button>
+          </Right>
+        </Header>
+        <Content>
+
+
+
+        </Content>
+        <Footer>
+          <FooterTab>
+            <Button full>
+              <Text>Footer</Text>
+            </Button>
+          </FooterTab>
+        </Footer>
+      </Container>
     );
   }
 }

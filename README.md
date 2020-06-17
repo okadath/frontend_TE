@@ -369,3 +369,25 @@ async componentDidMount() {
 
 
 
+Menu swith links:
+```jsx
+  render() {
+    return (  
+                  <BrowserRouter>
+        <div className="App">
+                   <Header />
+          <Navigation />
+            <Switch>
+
+             <Route path="/" component={Home} exact/>
+             <Route path="/about" component={About}/>
+             <Route path="/contact" component={Contact}/>
+             <Route path="/get_videos" component={Get_demo}/>
+            <Route component={Error}/>
+           </Switch>
+
+        </div> 
+      </BrowserRouter>
+       );
+  }
+```
