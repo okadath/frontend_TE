@@ -1,5 +1,38 @@
 # Advertencia:
 No entiendo como integrar los estilos de tu plantilla con un componente normal que yo haya hecho, asi que para las pruebas he creado componentes simples sin ningun estilo 
+# Native y web
+
+el web se corre de modo distinto que el native a pesar de que ambos ejecutan el mismo codigo, hay que seguir los pasos de la pagina nativebase
+
+### para app
+es mejor crear una carpeta e instalar ahi expo y luego crear un proyecto adentro, asi se mantiene limpia la version principal de la computadora, podrian hacer problemas de dependencias asi que mejor mantener la carpeta interna
+hay que instalar android studio y ubicarlo en al carpeta del suario en ubuntu, instalar el ndk, el sdk y la libreria del modelo de celular a testear por medio del settings de android studio
+despues de eso permitira compilar la app y usar expo
+
+basta con instalar los sig paquetes(quiza distinta version) con yarn:
+```sh
+    "expo": "~37.0.3",
+    "expo-font": "^8.1.1",
+    "native-base": "^2.13.12",
+    "react": "^16.13.1",
+    "react-dom": "~16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
+    "react-native-web": "~0.11.7",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0"
+```
+
+y ejecutar el proyecto, ubicarse dentro de la carpeta /native/frontend_TE/ y ejecutar `yarn  expo start`
+
+### para web
+
+hay que instalar las dependencias y la configuracion de la apgina de native base
+
+despues simplemente ejecutar con `yarn start`
+
+no lo usaremos desde el mismo proyecto por que en web requiere reenlazar las librerias de react y eso produce problemas apra ejecutarlo en app apra celulares, entonces mejor mantener dos proyectos con el mismo codigo :v
+
+
 
 # Frontend para testing 
 Necesito ir probando como manejar la API para que sea sencilla de manejar

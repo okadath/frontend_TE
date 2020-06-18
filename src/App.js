@@ -103,7 +103,7 @@ MaterialIcons: require("@expo/vector-icons/build/vendor/react-native-vector-icon
           </Left>
 
           <Body>
-            <Title>Experimental</Title>
+            <Title>Esxperimentalss</Title>
           </Body>
            <Right>
             <Button iconLeft transparent >
@@ -128,7 +128,7 @@ MaterialIcons: require("@expo/vector-icons/build/vendor/react-native-vector-icon
         </Content>
         <Footer>
           <FooterTab>
-            <Button full>
+            <Button block full>
               <Text>Footer</Text>
             </Button>
           </FooterTab>
